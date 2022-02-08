@@ -2,6 +2,8 @@
 var calculate = document.getElementById("calculate")
 var multiplicand = document.getElementById("multiplicand")
 var multiplier = document.getElementById("multiplier")
+var download = document.getElementById("Download")
+var dData = "TEST WHO LET THE DOGS OUT\n\n\n\n\nKAPPA"
 
 calculate.onclick = function(){
     
@@ -26,3 +28,15 @@ calculate.onclick = function(){
         }
     } 
 }
+download.onclick = function() {
+    var filename = "output.txt"
+    var element = document.createElement('a');
+    element.setAttribute('href','data:text/plain;charset=utf-8, ' + encodeURIComponent(dData));
+    element.setAttribute('download', filename);
+    document.body.appendChild(element);
+    element.click();
+    //document.body.removeChild(element);
+}
+
+
+
