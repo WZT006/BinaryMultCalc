@@ -13,6 +13,7 @@
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Calculator">
     <meta property="og:type" content="Website">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode"><header class="u-clearfix u-header u-header" id="sec-3366"><div class="u-align-left u-clearfix u-sheet u-sheet-1"></div></header>
@@ -23,11 +24,13 @@
             <div class="u-layout-row">
               <div class="u-align-center u-container-style u-layout-cell u-size-15 u-layout-cell-1">
                 <div class="u-container-layout u-container-layout-1">
-                  <h6 class="u-text u-text-1">0<br>
-                  </h6>
-                  <h6 class="u-text u-text-2">0<br>
-                  </h6>
-                  <a class="u-btn u-button-style u-btn-1">Decimal</a>
+                  <div class="u-text u-text-1 mb-2" id="multiplier">Multiplier<br>
+                  </div>
+                  <input type="number">
+                  <div class="u-text u-text-2 mb-2" id="multiplicand">Multiplicand<br>
+                  </div>
+                  <input type="number">
+                  <a class="u-btn u-button-style u-btn-1 text-white">Decimal</a>
                   <div class="u-container-style u-group u-group-1">
                     <div class="u-container-layout">
                       <a class="u-btn u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2">1<br>
@@ -55,9 +58,9 @@
                       </a>
                     </div>
                   </div>
-                  <a class="u-btn u-button-style u-btn-14">Download<br>
+                  <a class="u-btn u-button-style u-btn-14 text-white">Download<br>
                   </a>
-                  <a class="u-btn u-button-style u-btn-15">Step-By-Step</a>
+                  <a class="u-btn u-button-style u-btn-15 text-">Step-By-Step</a>
                 </div>
               </div>
               <div class="u-align-center u-container-style u-layout-cell u-size-15 u-layout-cell-2">
