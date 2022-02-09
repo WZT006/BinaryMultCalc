@@ -23,7 +23,7 @@ calculate.onclick = function(){
         var num1 = multiplicand.value
         var num2 = multiplier.value
         while (num1) {
-            if (num1 % 10 > 2){
+            if (num1 % 10 > 2 || num1 % 10 < 0){
                 window.alert("Invalid Value for Multiplicand")
                 return false
             }
@@ -31,7 +31,7 @@ calculate.onclick = function(){
         }
 
         while (num2) {
-            if (num2 % 10 > 2){
+            if (num1 % 10 > 2 || num1 % 10 < 0){
                 window.alert("Invalid Value for Multiplier")
                 return false
             }
