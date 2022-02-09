@@ -36,41 +36,45 @@ function get_twos_comp (x) {
 }
 
 // prompt 2 inputs for 2 numbers
-let m = 10011001;
-let n = 10011001;
+let m = "0101";
+let n = "010";
 
 m_length = m.length;
 n_length = n.length;
 
+var bigger_length;
+
 if (m_length > n_length) {
-    let bigger_length = m_length;
+    bigger_length = m_length;
 
     while (n.length !== m_length) {
         n = n[0] + n;
     }
 }
 else {
-    let bigger_length = n_length;
+    bigger_length = n_length;
 
     while (m.length !== n_length) {
         m = m[0] + m;
     }
 }
 
-console.log("Numbers Interpreted:\n");
-console.log(m + "\n");
-console.log(n + "\n");
-console.log("------------------------------------------------------\n");
 
-// # show immediate products
+console.log("Numbers Interpreted:");
+console.log(m);
+console.log(n);
+
+console.log("------------------------------------------------------");
+
+// # show intermediate products
 for (let i = bigger_length; i > 0; i--) {
     if (n[i-1] === '0') {
         multiChar("0", i+bigger_length);
-        console.log("\n");
+        // console.log("\n");
     }
     else {
         multiChar(m[0], i);
-        console.log("\n");
+        // console.log("\n");
     }
 }
 
@@ -79,7 +83,7 @@ if (n[0] === "1") {
     console.log(get_twos_comp(m));
 }
 
-console.log("------------------------------------------------------\n");
+console.log("------------------------------------------------------");
 
 // print final product
 let m_neg = false;
@@ -101,5 +105,23 @@ if (n_neg) {
     n = get_twos_comp(n);
 }
 
-// let result = 
-// convert string m and n to binary integers
+// get result first
+result = parseInt(m, 2) * parseInt(n, 2);
+
+// convert to binary as string
+binaryMul = result.toString(2);
+
+// leading zeroes raw
+if (m_neg !== n_neg) {
+    binaryMul = get_twos_comp(binaryMul);
+    while (binaryMul.length !== (2 * bigger_length)) {
+        binaryMul = "1" + binaryMul;
+    }
+    console.log(binaryMul);
+}
+else if (m_neg === n_neg) {
+    while (binaryMul.length != (2 * bigger_length)) {
+        binaryMul = "0" + binaryMul;
+    }
+    console.log(binaryMul);
+}
