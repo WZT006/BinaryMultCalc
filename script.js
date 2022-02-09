@@ -4,6 +4,10 @@ var multiplicand = document.getElementById("multiplicand")
 var multiplier = document.getElementById("multiplier")
 var download = document.getElementById("Download")
 var dData = "TEST WHO LET THE DOGS OUT\n\n\n\n\nKAPPA"
+var delay = 0
+setTimeout(function(){  //use for choosing whether all or step-by-step
+    //insert function here
+}, delay);
 
 calculate.onclick = function(){
     
@@ -71,8 +75,6 @@ download.onclick = function() {
     element.setAttribute('download', filename);
     document.body.appendChild(element);
     element.click();
-    //document.body.removeChild(element);
 }
-
 
 
