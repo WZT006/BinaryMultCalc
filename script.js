@@ -7,6 +7,17 @@ var dData = "TEST WHO LET THE DOGS OUT\n\n\n\n\nKAPPA"
 
 calculate.onclick = function(){
     
+    // validation for empty input
+    if(multiplicand.value == ''){
+        window.alert("Missing Value for Multiplicand")
+        return false
+    }
+
+    if(multiplier.value == ''){
+        window.alert("Missing Value for Multiplier")
+        return false
+    }
+
     // number validation for binary
     if(document.getElementById('binaryToggle').checked){
         var num1 = multiplicand.value
@@ -26,8 +37,33 @@ calculate.onclick = function(){
             }
             num2 = Math.floor(num2 / 10);
         }
-    } 
+    }
+    
+    // validation for 16 bits
+    var num1 = multiplicand.value
+    var num2 = multiplier.value
+    var ctr = 0;
+
+    while (num1) {
+        if (ctr > 16){
+            window.alert("Exceed number of bits for Multiplicand")
+            return false
+        }
+        ctr++
+        num1 = Math.floor(num1 / 10);
+    }
+
+    ctr = 0
+    while (num2) {
+        if (ctr > 16){
+            window.alert("Exceed number of bits for Multiplier")
+            return false
+        }
+        ctr++
+        num2 = Math.floor(num2 / 10);
+    }
 }
+
 download.onclick = function() {
     var filename = "output.txt"
     var element = document.createElement('a');
