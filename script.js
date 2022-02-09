@@ -4,10 +4,7 @@ var multiplicand = document.getElementById("multiplicand")
 var multiplier = document.getElementById("multiplier")
 var download = document.getElementById("Download")
 var dData = "TEST WHO LET THE DOGS OUT\n\n\n\n\nKAPPA"
-var delay = 0
-setTimeout(function(){  //use for choosing whether all or step-by-step
-    //insert function here
-}, delay);
+
 
 calculate.onclick = function(){
     
@@ -66,8 +63,20 @@ calculate.onclick = function(){
         ctr++
         num2 = Math.floor(num2 / 10);
     }
-}
+    compute();
+}   
+function compute(){
+    if(document.getElementById('stepToggle').checked){
+        var delay = 1000;
+    }
+    else{
+        var delay = 0;
+    }
 
+    setTimeout(function(){  //use for choosing whether all or step-by-step
+        console.log("Valid Inputs")
+    }, delay);// add * i in delay for delay in loops
+}
 download.onclick = function() {
     var filename = "output.txt"
     var element = document.createElement('a');
