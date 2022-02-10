@@ -5,7 +5,6 @@ var multiplier = document.getElementById("multiplier")
 var download = document.getElementById("Download")
 var dData = "TEST WHO LET THE DOGS OUT\n\n\n\n\nKAPPA"
 
-
 calculate.onclick = function(){
     
     // validation for empty input
@@ -63,20 +62,11 @@ calculate.onclick = function(){
         ctr++
         num2 = Math.floor(num2 / 10);
     }
-    compute();
-}   
-function compute(){
-    if(document.getElementById('stepToggle').checked){
-        var delay = 1000;
-    }
-    else{
-        var delay = 0;
-    }
-
-    setTimeout(function(){  //use for choosing whether all or step-by-step
-        console.log("Valid Inputs")
-    }, delay);// add * i in delay for delay in loops
+    var num1 = multiplicand.value
+    var num2 = multiplier.value    
+    compute(num1,num2);
 }
+
 download.onclick = function() {
     var filename = "output.txt"
     var element = document.createElement('a');
@@ -86,4 +76,76 @@ download.onclick = function() {
     element.click();
 }
 
+
+
+
+
+
+function compute(num1, num2){
+    if(document.getElementById('stepToggle').checked){
+        var delay = 1000;
+    }
+    else{
+        var delay = 0;
+    }
+    var PnP = document.getElementById("P&P Solution");
+    var Pnpans = ""
+    for (let i=0; i < num1; i++) // change to whatever loop for computation
+    {
+        setTimeout(function(){  //use for choosing whether all or step-by-step 
+            Pnpans += "Lorem Ipsum <br/>"
+            PnP.innerHTML = Pnpans;
+
+        }, delay*i);// add * i in delay for delay in loops
+    }
+
+    var booth = document.getElementById("Booth Solution");
+    var bAns = ""    
+    for (let i=0; i < num2; i++) // change to whatever loop for computation
+    {
+        setTimeout(function(){  //use for choosing whether all or step-by-step 
+            bAns += "Lorem Ipsum <br/>"
+            booth.innerHTML = bAns;
+
+        }, delay*i);// add * i in delay for delay in loops
+    }
+}
+
+
+function reverseString(str) {
+    return (str === '') ? '' : reverseString(str.substr(1)) + str.charAt(0);
+}
+
+function multiChar(x, y) {
+    let z = x.repeat(y);
+    console.log(z);
+}
+
+function get_twos_comp (x) {
+    let found_one = false;
+    let final_str = "";
+
+    for (let i = x.length; i > 0; i--) {
+        if (found_one == true) {
+            if (x[i-1] == "0") {
+                final_str += "1"
+            }
+            else if (x[i-1] == "1") {
+                final_str += "0"
+            }
+        }
+        else {
+            if ((x[i-1] == "1") && (found_one == false)) {
+                found_one = true;
+                final_str += x[i-1];
+            }
+            else {
+                final_str += x[i-1]
+            }
+        }
+    }
+
+    final_str = reverseString(final_str);
+    return final_str;
+}
 
