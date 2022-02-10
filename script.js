@@ -44,17 +44,19 @@ calculate.onclick = function(){
     var num2 = multiplier.value
     var ctr = 0;
 
-    while (num1) {
+    while (num1 && num1 != -1) {
         if (ctr > 16){
             window.alert("Exceed number of bits for Multiplicand")
             return false
         }
         ctr++
         num1 = Math.floor(num1 / 10);
+        console.log(ctr)
+        console.log(num1)
     }
 
     ctr = 0
-    while (num2) {
+    while (num2 && num2 != -1) {
         if (ctr > 16){
             window.alert("Exceed number of bits for Multiplier")
             return false
@@ -63,8 +65,10 @@ calculate.onclick = function(){
         num2 = Math.floor(num2 / 10);
     }
     var num1 = multiplicand.value
-    var num2 = multiplier.value    
-    compute(num1,num2);
+    var num2 = multiplier.value
+    convertToBinary(num1)
+    convertToBinary(num2)
+    // compute(num1,num2);
 }
 
 download.onclick = function() {
@@ -75,9 +79,6 @@ download.onclick = function() {
     document.body.appendChild(element);
     element.click();
 }
-
-
-
 
 
 
@@ -109,6 +110,21 @@ function compute(num1, num2){
 
         }, delay*i);// add * i in delay for delay in loops
     }
+}
+
+function convertToBinary(x) {
+    let bin = 0;
+    let rem, i = 1, step = 1;
+    while (x != 0) {
+        rem = x % 2;
+        console.log(
+            `Step ${step++}: ${x}/2, Remainder = ${rem}, Quotient = ${parseInt(x/2)}`
+        );
+        x = parseInt(x / 2);
+        bin = bin + rem * i;
+        i = i * 10;
+    }
+    console.log(`Binary: ${bin}`);
 }
 
 
