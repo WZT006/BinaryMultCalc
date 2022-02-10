@@ -3,10 +3,11 @@ var calculate = document.getElementById("calculate")
 var multiplicand = document.getElementById("multiplicand")
 var multiplier = document.getElementById("multiplier")
 var download = document.getElementById("Download")
-var dData = "TEST WHO LET THE DOGS OUT\n\n\n\n\nKAPPA"
+var PnP = document.getElementById("P&P Solution");
+var dData = ""
 
 calculate.onclick = function(){
-    
+    dData = ""
     // validation for empty input
     if(multiplicand.value == ''){
         window.alert("Missing Value for Multiplicand")
@@ -44,7 +45,8 @@ calculate.onclick = function(){
     var num1 = parseInt(multiplicand.value)
     var num2 = parseInt(multiplier.value)
     var ctr = 0;
-    
+    PnP.innerHTML = "";
+    console.log("Clear")
     while (num1 && num1 != -1) {
         if (ctr > 16){
             window.alert("Exceed number of bits for Multiplicand")
@@ -52,8 +54,8 @@ calculate.onclick = function(){
         }
         ctr++
         num1 = Math.floor(num1 / 10);
-        console.log(ctr)
-        console.log(num1)
+        // console.log(ctr)
+        // console.log(num1)
     }
     
     ctr = 0
@@ -77,7 +79,7 @@ calculate.onclick = function(){
         num1 = num1.toString(2)
         num1 = num1.substring(1)
         num1 = get_twos_comp(num1)
-        console.log(num1)
+        // console.log(num1)
         num1 = "1" + num1
     }
 
@@ -89,7 +91,7 @@ calculate.onclick = function(){
         num2 = num2.toString(2)
         num2 = num2.substring(1)
         num2 = get_twos_comp(num2)
-        console.log(num2)
+        // console.log(num2)
         num2 = "1" + num2
     }
 
@@ -98,6 +100,7 @@ calculate.onclick = function(){
         compute(num1, num2)
     }
     else compute(num1,num2);
+    
 }
 
 download.onclick = function() {
@@ -119,117 +122,11 @@ function compute(m, n){
     else{
         var delay = 0;
     }
-    var PnP = document.getElementById("P&P Solution");
-    var Pnpans = ""
-
-    
-    // length of num
-    m_length = m.length
-    n_length = n.length
-
-    var bigger_length;
-
-    if (m_length > n_length) {
-        bigger_length = m_length;
-        while (n.length !== m_length) {
-            n = n[0] + n;
-        }
-    }
-    else {
-        bigger_length = n_length;
-        while (m.length !== n_length) {
-            m = m[0] + m;
-        }
-    }
-
-    for (let i = bigger_length; i > 0; i--) {
-        if (n[i-1] === '0') {
-            Pnpans += multiChar("0", i + bigger_length);
-            console.log(Pnpans);
-            Pnpans += "<br/>"
-        }
-        else {
-            Pnpans += multiString(m[0], i, m);
-            console.log(Pnpans);
-            Pnpans += "<br/>"
-            
-        }
-    }
-    
-    let m_neg = false;
-    let n_neg = false;
-    
-    if (m[0] === "1") m_neg = true;
-    if (n[0] === "1") n_neg = true;
-    
-    if (m_neg) m = get_twos_comp(m);
-    if (n_neg) n = get_twos_comp(n);
-    
-    // get result first
-    result = parseInt(m, 2) * parseInt(n, 2);
-    
-    // convert to binary as string
-    binaryMul = result.toString(2);
-    
-    Pnpans += "Product = "
-    // leading zeroes raw
-    if (m_neg !== n_neg) {
-        binaryMul = get_twos_comp(binaryMul);
-        while (binaryMul.length !== (2 * bigger_length)) {
-            binaryMul = "1" + binaryMul;
-        }
-        console.log(binaryMul);
-        Pnpans += binaryMul
-        console.log(Pnpans);
-        Pnpans += "<br/>"
-    }
-    else if (m_neg === n_neg) {
-        while (binaryMul.length != (2 * bigger_length)) {
-            binaryMul = "0" + binaryMul;
-        }
-        Pnpans += binaryMul
-        console.log(Pnpans);
-        Pnpans += "<br/>"
-    }
-
-    PnP.innerHTML = Pnpans;
-
-    // for (let i=0; i < num1; i++) // change to whatever loop for computation
-    // {
-        // setTimeout(function(){  //use for choosing whether all or step-by-step 
-        //     Pnpans += "Lorem Ipsum <br/>"
-        //     PnP.innerHTML = Pnpans;
-
-        // }, delay*i);// add * i in delay for delay in loops
-    // }
+    Pnp(m,n,delay);
 
     var booth = document.getElementById("Booth Solution");
     var bAns = ""    
-    for (let i=0; i < n; i++) // change to whatever loop for computation
-    {
-        setTimeout(function(){  //use for choosing whether all or step-by-step 
-            bAns += "Lorem Ipsum <br/>"
-            booth.innerHTML = bAns;
-
-        }, delay*i);// add * i in delay for delay in loops
-    }
 }
-
-function convertToBinary(x) {
-    let bin = 0;
-    let rem, i = 1, step = 1;
-    while (x != 0) {
-        rem = x % 2;
-        console.log(
-            `Step ${step++}: ${x}/2, Remainder = ${rem}, Quotient = ${parseInt(x/2)}`
-        );
-        x = parseInt(x / 2);
-        bin = bin + rem * i;
-        i = i * 10;
-    }
-    console.log(`Binary: ${bin}`);
-}
-
 
 function reverseString(str) {
     return (str === '') ? '' : reverseString(str.substr(1)) + str.charAt(0);
@@ -242,11 +139,11 @@ function multiChar(x, y) {
 }
 
 function multiString(str, num, x) {
-    console.log(str);
-    console.log(x)
+    // console.log(str);
+    // console.log(x)
     let z = str.repeat(num)
     z = z + x
-    console.log(z)
+    // console.log(z)
     return z
 }
 
@@ -278,3 +175,98 @@ function get_twos_comp (x) {
     return final_str;
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+ }
+async function Pnp(m,n,delay){
+    var Pnpans = ""
+   dData += "Pen & Paper \n"
+    
+    // length of num
+    m_length = m.length
+    n_length = n.length
+
+    var bigger_length;
+
+    if (m_length > n_length) {
+        bigger_length = m_length;
+        while (n.length !== m_length) {
+            n = n[0] + n;
+        }
+    }
+    else {
+        bigger_length = n_length;
+        while (m.length !== n_length) {
+            m = m[0] + m;
+        }
+    }
+
+    for (let i = bigger_length; i > 0; i--) {
+        if (n[i-1] === '0') {
+            temp = multiChar("0", i + bigger_length);
+            Pnpans += temp
+            dData  += temp + "\n"
+            
+            Pnpans += "<br/>"
+            PnP.innerHTML = Pnpans;
+            await sleep(delay);         
+        }
+        else {
+            temp = multiString(m[0], i, m);
+            Pnpans += temp
+            dData += temp + "\n"
+            
+            Pnpans += "<br/>"
+            PnP.innerHTML = Pnpans;
+            await sleep(delay);  
+                  
+        }
+    }
+    
+    let m_neg = false;
+    let n_neg = false;
+    
+    if (m[0] === "1") m_neg = true;
+    if (n[0] === "1") n_neg = true;
+    
+    if (m_neg) m = get_twos_comp(m);
+    if (n_neg) n = get_twos_comp(n);
+    
+    // get result first
+    result = parseInt(m, 2) * parseInt(n, 2);
+    
+    // convert to binary as string
+    binaryMul = result.toString(2);
+    
+    Pnpans += "Product = "
+    dData += "Product = "
+    // leading zeroes raw
+
+    if (m_neg !== n_neg) {
+        binaryMul = get_twos_comp(binaryMul);
+        while (binaryMul.length !== (2 * bigger_length)) {
+            binaryMul = "1" + binaryMul;
+        }
+        
+        Pnpans += binaryMul
+        dData += binaryMul + "\n"
+        Pnpans += "<br/>"
+        PnP.innerHTML = Pnpans;
+        await sleep(delay);  
+            
+    }
+    else if (m_neg === n_neg) {
+        while (binaryMul.length != (2 * bigger_length)) {
+            binaryMul = "0" + binaryMul;
+        }
+        Pnpans += binaryMul
+        dData += binaryMul + "\n"
+        // console.log(Pnpans);
+        Pnpans += "<br/>"
+        PnP.innerHTML = Pnpans;
+        await sleep(delay);  
+         
+    }
+
+    dData += "\n\n\n"
+}
