@@ -70,12 +70,12 @@ let extended_n = n + "0"
 
 if (n.length % 2 === 1) extended_n = extended_n[0] + extended_n
 
-console.log("Extended multiplier" + extended_n)
+console.log("Extended multiplier: " + extended_n)
 console.log("------------------------------------------------------")
 
 // show booths equivalent multiplicand and multiplier
 console.log("BOOTHS EQUIVALENT:")
-console.log(multiString(m[0].repeat(bigger_length)) + m)
+console.log(m[0].repeat(bigger_length) + m)
 
 let multiplier_list = []
 
@@ -90,8 +90,10 @@ for (let i = 0; i < bigger_length; i += 2) {
     else if (extended_n[i]+extended_n[i+1]+extended_n[i+2] === "111") multiplier_list.push("0")
 }
 
+
 // print out the multiplier list inside parentheses without trailing line feed
-for (let i = 0; i < multiplier_list.length; i++) process.stdout.write("(" + i + ")")
+for (let i = 0; i < multiplier_list.length; i++) process.stdout.write("(" + multiplier_list[i] + ")")
+
 console.log()
 console.log("------------------------------------------------------")
 
@@ -107,8 +109,8 @@ for (let i = multiplier_list.length; i > 0; i--) {
         let fullstring = m 
         while (fullstring.length !== current_max_length) {
             fullstring = fullstring[0] + fullstring
-            console.log(fullstring)
         }
+        console.log(fullstring)
     }
 
     // if curr is -1
@@ -116,8 +118,8 @@ for (let i = multiplier_list.length; i > 0; i--) {
         let fullstring = get_twos_comp(m) 
         while (fullstring.length !== current_max_length) {
             fullstring = fullstring[0] + fullstring
-            console.log(fullstring)
         }
+        console.log(fullstring)
     }
 
     // if curr is 2
@@ -125,8 +127,8 @@ for (let i = multiplier_list.length; i > 0; i--) {
         let fullstring = m + "0"
         while (fullstring.length !== current_max_length) {
             fullstring = fullstring[0] + fullstring
-            console.log(fullstring)
         }
+        console.log(fullstring)
     }
 
     // if curr is -2
@@ -134,8 +136,8 @@ for (let i = multiplier_list.length; i > 0; i--) {
         let fullstring = get_twos_comp(m) + "0"
         while (fullstring.length !== current_max_length) {
             fullstring = fullstring[0] + fullstring
-            console.log(fullstring)
         }
+        console.log(fullstring)
     }
 
     current_max_length -= 2

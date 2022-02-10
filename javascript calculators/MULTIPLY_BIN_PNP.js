@@ -69,6 +69,7 @@ else {
 console.log("Numbers Interpreted:");
 console.log(m);
 console.log(n);
+console.log(bigger_length)
 
 console.log("------------------------------------------------------");
 

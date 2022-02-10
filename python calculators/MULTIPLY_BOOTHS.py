@@ -46,7 +46,7 @@ print("Extended multiplier:", extended_n)
 print("------------------------------------------------------")
 print("BOOTHS EQUIVALENT:")
 # show booths equivalent multiplicand and multiplier
-print(m[0] * bigger_length + m)
+print((m[0] * bigger_length) + m)
 
 multiplier_list = []
 for i in range(0, bigger_length, 1):
