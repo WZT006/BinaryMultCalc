@@ -40,6 +40,8 @@ calculate.onclick = function(){
             }
             num2 = Math.floor(num2 / 10);
         }
+
+        // compute(num1, num2)
     }
 
     
@@ -66,35 +68,36 @@ calculate.onclick = function(){
     var num1 = parseInt(multiplicand.value)
     var num2 = parseInt(multiplier.value)
 
-    if (num1 > 0) {
-        num1 = num1.toString(2)
-        num1 = "0" + num1
-    }
-    else {
-        num1 = num1.toString(2)
-        num1 = num1.substring(1)
-        num1 = get_twos_comp(num1)
-        // console.log(num1)
-        num1 = "1" + num1
-    }
-
-    if (num2 > 0) {
-        num2 = num2.toString(2)
-        num2 = "0" + num2
-    }
-    else {
-        num2 = num2.toString(2)
-        num2 = num2.substring(1)
-        num2 = get_twos_comp(num2)
-        // console.log(num2)
-        num2 = "1" + num2
-    }
 
     if (document.getElementById('decimalToggle').checked) {
         console.log(num1 + ' ' + num2)
+
+        if (num1 > 0) {
+            num1 = num1.toString(2)
+            num1 = "0" + num1
+        }
+        else {
+            num1 = num1.toString(2)
+            num1 = num1.substring(1)
+            num1 = get_twos_comp(num1)
+            // console.log(num1)
+            num1 = "1" + num1
+        }
+    
+        if (num2 > 0) {
+            num2 = num2.toString(2)
+            num2 = "0" + num2
+        }
+        else {
+            num2 = num2.toString(2)
+            num2 = num2.substring(1)
+            num2 = get_twos_comp(num2)
+            // console.log(num2)
+            num2 = "1" + num2
+        }
         compute(num1, num2)
     }
-    else compute(num1,num2);
+    else compute(num1, num2)
     
 }
 
