@@ -7,6 +7,12 @@ function multiChar(x, y) {
     console.log(z);
 }
 
+function multiString(str, num, x) {
+    let z = str.repeat(num);
+    process.stdout.write(z)
+    console.log(x);
+}
+
 function get_twos_comp (x) {
     let found_one = false;
     let final_str = "";
@@ -69,12 +75,10 @@ console.log("------------------------------------------------------");
 // # show intermediate products
 for (let i = bigger_length; i > 0; i--) {
     if (n[i-1] === '0') {
-        multiChar("0", i+bigger_length);
-        // console.log("\n");
+        multiChar("0", i + bigger_length);
     }
     else {
-        multiChar(m[0], i);
-        // console.log("\n");
+        multiString(m[0], i, m);
     }
 }
 

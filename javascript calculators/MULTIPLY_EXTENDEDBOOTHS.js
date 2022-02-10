@@ -153,6 +153,7 @@ if (n[0] === "1") n_neg = true
 if (m_neg) m = get_twos_comp(m)
 if (n_neg) n = get_twos_comp(n)
 
+
 let result = parseInt(m, 2) * parseInt(n, 2)
 
 let binaryMul = result.toString(2)
