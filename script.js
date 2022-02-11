@@ -240,7 +240,8 @@ async function compute(m, n){
     bAns += extended_n
     dData += "Extended Multiplier: " + extended_n
     bAns += "<br/>"
-
+    booth.innerHTML = bAns
+    await sleep(delay)
     bAns += "------------------------------------------------------ <br/>"
     bAns += "BOOTHS EQUIVALENT: <br/>"
 
@@ -254,9 +255,12 @@ async function compute(m, n){
     dData += temp
     dData += m
     dData += "\n"
+    
+    booth.innerHTML = bAns
+    await sleep(delay)
 
     let multiplier_list = []
-
+    
     for (let i = 0; i < bigger_length; i++) {
         if (extended_n[i]+extended_n[i+1] === "00") multiplier_list.push("0");
         else if (extended_n[i]+extended_n[i+1] === "01") multiplier_list.push("1");
@@ -271,7 +275,8 @@ async function compute(m, n){
         bAns += ")";
         dData += "(" + multiplier_list[i] + ")"
     }
-
+    booth.innerHTML = bAns
+    await sleep(delay)
     bAns += "<br/>"
     bAns += "------------------------------------------------------ <br/>"
     bAns += "INTERMEDIATE STEPS:<br/>"
