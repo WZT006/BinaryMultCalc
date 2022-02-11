@@ -97,7 +97,10 @@ calculate.onclick = function(){
         }
         compute(num1, num2)
     }
-    else compute(num1, num2)
+    else {
+        num1 = multiplicand.value
+        num2 = multiplier.value
+        compute(num1, num2)}
     
 }
 
