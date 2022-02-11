@@ -172,10 +172,19 @@ async function compute(m, n){
     
     if (m[0] === "1") m_neg = true;
     if (n[0] === "1") n_neg = true;
-    
+    let save_m = m
+    let same_n = n
     if (m_neg) m = get_twos_comp(m);
     if (n_neg) n = get_twos_comp(n);
     
+    if (n_neg)
+    {
+        Pnpans += get_twos_comp(save_m)
+        dData += get_twos_comp(save_m)
+        Pnpans += "<br/>"
+        PnP.innerHTML = Pnpans;
+        await sleep(delay)
+    }
     // get result first
     result = parseInt(m, 2) * parseInt(n, 2);
     
@@ -216,6 +225,8 @@ async function compute(m, n){
 
 
     var booth = document.getElementById("Booth Solution");
+    m = save_m
+    n = same_n
     dData += "BOOTHS ALGORITHM: \n"
     var bAns = ""
 
@@ -225,9 +236,9 @@ async function compute(m, n){
     bAns += "<br/>"
     let extended_n = n + "0"
 
-    bAns += "Multiplier: "
+    bAns += "Extended Multiplier: "
     bAns += extended_n
-    dData += "Multiplier: " + extended_n
+    dData += "Extended Multiplier: " + extended_n
     bAns += "<br/>"
 
     bAns += "------------------------------------------------------ <br/>"
@@ -235,6 +246,7 @@ async function compute(m, n){
 
     dData += "\n------------------------------------------------------\n"
     dData += "BOOTHS EQUIVALENT: \n"
+
     temp = m[0].repeat(bigger_length)
     bAns += temp
     bAns += m;
@@ -356,6 +368,8 @@ async function compute(m, n){
     // start of extended booths 
     var ebooth = document.getElementById("Extend Solution");
     var ebAns = "" 
+    m = save_m
+    n = same_n
     dData += "Extended Booth's ALGORITHM: \n"
     ebAns += "Multiplicand: "
     ebAns += m
@@ -379,8 +393,9 @@ async function compute(m, n){
 
     dData += "------------------------------------------------------\n"
     dData += "BOOTHS EQUIVALENT: \n"
-
-    temp += m[0].repeat(bigger_length)
+    console.log(temp)
+    temp = m[0].repeat(bigger_length)
+    
     ebAns += temp
     ebAns += m;
     ebAns += "<br/>"
